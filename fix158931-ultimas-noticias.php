@@ -7,7 +7,7 @@
  * Author URI:      https://github.com/fixonweb
  * Text Domain:     fix158931-ultimas-noticias
  * Domain Path:     /languages
- * Version:         1.0.0
+ * Version:         1.0.2
  *
  * @package         Fix158931_Ultimas_Noticias
  */
@@ -16,10 +16,14 @@
 
 /*
 1.0.0 - start
+1.0.2 - update via github
 
 */
 
 defined( 'ABSPATH' ) or die( 'No script kiddies please!' );
+
+require 'plugin-update-checker.php';
+$myUpdateChecker = Puc_v4_Factory::buildUpdateChecker('https://github.com/FIXONWEB/fix158931-ultimas-noticias', __FILE__, 'fix158931-ultimas-noticias/fix158931-ultimas-noticias');
 
 add_shortcode("fix158931_ultimas_noticias", "fix158931_ultimas_noticias");
 function fix158931_ultimas_noticias($atts, $content = null){

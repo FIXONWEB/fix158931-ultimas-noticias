@@ -35,3 +35,6 @@ e.g.
 
 = 1.0.0 =
 * Lançamento
+
+= 1.0.2 = 
+* update via github
