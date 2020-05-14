@@ -22,9 +22,9 @@ Pode acontecer de querer incluir uma categoria e também querer que o post
 recete não seja incluso. Isso pode acontecer, por exemplo, se desejar 
 dar destaque em outro local evitando assim a repetição do post. Nesse 
 caso, incluir o parametro "exclude_first_cat". No exemplo abaixo 
-queremos incluir a categoria "noticias-principais e destaque" porém 
-também queremos que o primeiro post (ou o post mais recente) não seja 
-incluso:
+queremos incluir as categorias "noticias-principais" e "destaque" porém 
+também queremos que o primeiro post (ou o post mais recente) da categoria 
+destaque não seja incluso na lista:
 
 [fix158931_ultimas_noticias category="destaque,noticias-principais" exclude_first_cat="destaque"]
 
@@ -36,8 +36,14 @@ só que, informando que o plugin está numa fonte local. Dái é só apontar
 para o arquivo zipo que acabou de baixar do github.
 
 Este plugin está configurado de modo a receber as atualizações tão logo esteja
-disponível uma nova versão repositorio do github em 
+disponível uma nova versão repositório do github em 
 https://github.com/fixonweb/fix158931-ultimas-noticias.
+
+Pode acontecer que devido a necessidade de configurações mais especificas este plugin pode'poderia ser copiado e na nova cópia ser aplicado certas modificações, tornando assim, esse plugin como um ponto de partidas a se obter algo bem mais personalizavel.
+
+Esse plugin também pode ser fornecido como um add-in do plugin fixon-developer, como é o caso de evitar a instalação de muitos plugin do mesmo autor FIXONWEB. Tal plugin foi concebido com o propósito de separar as funções em módulos ao mesmo tempo que evitar a instalação de muitos plugins. 
+
+Os plugins premium pode ter sua fonte de update apontada para um repositório particular bem especifico onde somente através de chaves de API é que poderia ser realizados as atualizações.
 
 == Frequently Asked Questions ==
 
