@@ -39,11 +39,13 @@ Este plugin está configurado de modo a receber as atualizações tão logo este
 disponível uma nova versão repositório do github em 
 https://github.com/fixonweb/fix158931-ultimas-noticias.
 
-Pode acontecer que devido a necessidade de configurações mais especificas este plugin pode'poderia ser copiado e na nova cópia ser aplicado certas modificações, tornando assim, esse plugin como um ponto de partidas a se obter algo bem mais personalizavel.
+Pode acontecer que devido a necessidade de configurações mais especificas este plugin pode poderia ser copiado e na nova cópia ser aplicado certas modificações, tornando assim, esse plugin como um ponto de partidas a se obter algo bem mais personalizavel.
 
 Esse plugin também pode ser fornecido como um add-in do plugin fixon-developer, como é o caso de evitar a instalação de muitos plugin do mesmo autor FIXONWEB. Tal plugin foi concebido com o propósito de separar as funções em módulos ao mesmo tempo que evitar a instalação de muitos plugins. 
 
-Os plugins premium pode ter sua fonte de update apontada para um repositório particular bem especifico onde somente através de chaves de API é que poderia ser realizados as atualizações.
+Os plugins premium pode ter sua fonte de update apontada para um repositório particular bem específico onde somente através de chaves de API é que poderia ser realizados as atualizações. Entende-se como plugin premium quando o cliente solicitam certos ajustes e que por motivos diversos não quer que o plugin fique no espaço público tornando assim algo exclusivo.
+
+
 
 == Frequently Asked Questions ==
 
