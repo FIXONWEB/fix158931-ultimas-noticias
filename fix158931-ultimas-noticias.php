@@ -5,11 +5,11 @@
  * Description:     Shortcode que mostra as últimas 4 noticias recentes
  * Author:          FIXONWEB
  * Author URI:      https://github.com/fixonweb
- * Text Domain:     fix158931-ultimas-noticias
+ * Text Domain:     fix158931
  * Domain Path:     /languages
- * Version:         1.0.2
+ * Version:         1.0.3
  *
- * @package         Fix158931_Ultimas_Noticias
+ * @package         Fix158931
  */
 
 //fix158931
@@ -17,6 +17,7 @@
 /*
 1.0.0 - start
 1.0.2 - update via github
+1.0.3 - adicionado parametro exclude_first_cat
 
 */
 
@@ -28,29 +29,51 @@ $myUpdateChecker = Puc_v4_Factory::buildUpdateChecker('https://github.com/FIXONW
 add_shortcode("fix158931_ultimas_noticias", "fix158931_ultimas_noticias");
 function fix158931_ultimas_noticias($atts, $content = null){
 
-	$post_type = 'post';
-	$args = array(
-		'numberposts' => 4,
-		'post_type'   => $post_type,
-    	'tax_query' => array(
-        	array(
-            	'taxonomy' => 'category',
-            	'field'    => 'slug',
-            	'terms'    => 'noticias-principais'
-        	)
-    	)
+	extract(shortcode_atts(array(
+		"post_type" => 'post',
+		"numberposts" => 4,
+		"category" => '',
+		"exclude_first_cat" => ''
+	), $atts));
 
-		// 'tax_query' => array(
-  //       	array(
-  //           	'taxonomy' => 'clientes',
-  //           	'field'    => 'slug',
-  //           	'terms'    => $cliente
-  //       	)
-  //   	)
-	);
-
+	//--------------------------------filtrar exclude - ini
+	$posts_exclude_array = array();
+	if($exclude_first_cat){
+		$exclude_first_cat = preg_replace("/ /", "", $exclude_first_cat); //retirar os espaços
+		$exclude_first_cat_a = explode(",", $exclude_first_cat); //tranformar em array
+	    $args_excludes = array(
+	        'post_type' => $post_type,
+	        'posts_per_page' => 1
+	    );
+        $args_excludes['tax_query'][] = array(
+            'taxonomy'  => 'category',
+            'field'     => 'slug',
+            'terms'     => $exclude_first_cat_a
+        );
+		$posts_excludes = get_posts( $args_excludes );
+		foreach ($posts_excludes as $posts_exclude) {
+			$posts_exclude_array[] = $posts_exclude->ID;
+		}
+	}
+	//--------------------------------filtrar exclude - end
+    $args = array(
+        'post_type' => $post_type,
+        'posts_per_page' => $numberposts,
+        'exclude' => $posts_exclude_array
+    );
+    if($category){
+    	$category = preg_replace("/ /", "", $category);
+    	$category_a = explode(",", $category);
+        $args['tax_query'][] = array(
+            'taxonomy'  => 'category',
+            'field'     => 'slug',
+            // 'terms'     => array( 'destaque', 'noticias-principais' )
+            // 'terms'     => array( 'destaque' )
+            'terms'     => $category_a
+            // 'operator'  => 'IN'
+        );
+    }
 	$posts = get_posts( $args );
-
 	ob_start();
 	?>
 		<style type="text/css">
@@ -126,5 +149,8 @@ function fix158931_ultimas_noticias($atts, $content = null){
 			<?php $i++; ?>
 		<?php } ?>
 	<?php
+	// echo '<pre>';
+	// print_r($posts_exclude_array);
+	// echo '</pre>';
 	return ob_get_clean();
 }
