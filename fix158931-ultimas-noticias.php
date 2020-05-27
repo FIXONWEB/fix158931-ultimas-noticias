@@ -154,3 +154,12 @@ function fix158931_ultimas_noticias($atts, $content = null){
 	// echo '</pre>';
 	return ob_get_clean();
 }
+
+
+// Showing multiple post types in Posts Widget
+add_action( 'elementor/query/my_custom_filter33', function( $query ) {
+	// Here we set the query to fetch posts with
+	// post type of 'custom-post-type1' and 'custom-post-type2'
+	$query->set( 'offset', '1' );
+	//'offset'         => 1,
+} );
